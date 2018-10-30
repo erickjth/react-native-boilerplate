@@ -1,26 +1,35 @@
 import React, {Component} from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, View } from 'react-native';
+import NavigationHandler from 'navigation/navigationHandler';
 
-const instructions = Platform.select({
-	ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-	android:
-		'Double tap R on your keyboard to reload,\n' +
-		'Shake or press menu button for dev menu',
-});
-
-export default class App extends Component {
-
+export default class Home extends Component {
 	static navigationOptions = () => {
 		return ({
 			title: 'Home',
+			headerRight: (
+				<Button
+					onPress={() => alert('This is a button!')}
+					title="Info"
+					color="#fff"
+				/>
+			),
 		})
 	}
+
+	onPress = () => {
+		NavigationHandler.dispatch(
+			NavigationHandler.navigate({ routeName: 'Greeting' })
+		);
+	}
+
 	render() {
 		return (
 			<View style={styles.container}>
 				<Text style={styles.welcome}>Welcome to React Native!</Text>
-				<Text style={styles.instructions}>To get started, edit App.js</Text>
-				<Text style={styles.instructions}>{instructions}</Text>
+				<Button
+					onPress={this.onPress}
+					title='Go to Greeting'
+				/>
 			</View>
 		);
 	}
