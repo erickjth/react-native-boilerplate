@@ -102,8 +102,8 @@ android {
         applicationId "com.reactnativeboilerplate"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode project.env.get("_VERSIONCODE").toInteger()
+        versionName project.env.get("_VERSIONNAME")
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }

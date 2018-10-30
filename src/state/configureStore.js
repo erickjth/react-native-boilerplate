@@ -8,7 +8,7 @@ import rootSaga from 'state/sagas';
 import config from 'config';
 
 function createPersistor(store) {
-	const init = () => { store.dispatch(Actions.init()); };
+	const init = () => store.dispatch(Actions.init());
 	const persistor = persistStore(store, null, init);
 	return persistor;
 }
